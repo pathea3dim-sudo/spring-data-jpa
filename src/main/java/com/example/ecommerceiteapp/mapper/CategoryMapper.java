@@ -7,11 +7,12 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface CategoryMapper {
-    //return type=target
-    //parameter=source
+
 
     Category mapCreateCategoryRequestTotalCaegory(CreateCategoryRequest createCategoryRequest);
-    CategoryResponse mapCategoryToCategoryResponse (Category category);
+
+    Category toCategory(CreateCategoryRequest request);
+    CategoryResponse toCategoryResponse(Category category);
 
 
 
