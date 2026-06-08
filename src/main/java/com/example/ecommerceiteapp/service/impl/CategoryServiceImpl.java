@@ -3,6 +3,7 @@ package com.example.ecommerceiteapp.service.impl;
 import com.example.ecommerceiteapp.domain.Category;
 import com.example.ecommerceiteapp.dto.CategoryResponse;
 import com.example.ecommerceiteapp.dto.CreateCategoryRequest;
+import com.example.ecommerceiteapp.mapper.CategoryMapper;
 import com.example.ecommerceiteapp.repository.CategoryRepository;
 import com.example.ecommerceiteapp.service.CategoryService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
+    private final CategoryMapper categoryMapper;
 
     @Override
     public CategoryResponse createNew(CreateCategoryRequest createCategoryRequest) {
@@ -46,12 +48,13 @@ public class CategoryServiceImpl implements CategoryService {
                     .build();
         }
 
-        Category category = new Category();
-        category.setName(createCategoryRequest.name());
-        category.setDescription(createCategoryRequest.description());
-        category.setIcon(createCategoryRequest.icon());
-        category.setParentCategory(parentCategory);
+        Category category=categoryMapper
+                .mapCreateCategoryRequestTotalCaegory(createCategoryRequest);
+
+
+        //system generated data
         category.setIsDelete(false);
+        category.setParentCategory(parentCategory);
 
         Category savedCategory = categoryRepository.save(category);
 
