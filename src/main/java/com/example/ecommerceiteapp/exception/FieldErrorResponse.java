@@ -7,5 +7,6 @@ import lombok.Builder;
 public record FieldErrorResponse(
         String field,
         String message
-) {
+)
+{
 }
