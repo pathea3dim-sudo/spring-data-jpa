@@ -1,8 +1,8 @@
-package com.example.ecommerceiteapp.service;
+package com.example.ecommerceiteapp.feature.category;
 
-import com.example.ecommerceiteapp.dto.CategoryResponse;
-import com.example.ecommerceiteapp.dto.CreateCategoryRequest;
-import com.example.ecommerceiteapp.dto.UpdateCategoryRequest;
+import com.example.ecommerceiteapp.feature.category.dto.CategoryResponse;
+import com.example.ecommerceiteapp.feature.category.dto.CreateCategoryRequest;
+import com.example.ecommerceiteapp.feature.category.dto.UpdateCategoryRequest;
 import org.springframework.data.domain.Page;
 import java.util.List;
 

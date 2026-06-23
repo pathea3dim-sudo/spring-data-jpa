@@ -1,5 +1,6 @@
-package com.example.ecommerceiteapp.domain;
+package com.example.ecommerceiteapp.feature.order;
 
+import com.example.ecommerceiteapp.feature.product.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,15 +20,18 @@ public class OrderLine {
 
     @Column(nullable = false)
     private Boolean isDelete;
+    @Column(nullable = false)
 
-    private Integer quantity;
+    private Integer qty;
+    @Column(nullable = false)
+
     private BigDecimal unitPrice;
 
     @ManyToOne
     private Order order;
 
     @ManyToOne
-    private  Product product;
+    private Product product;
 
 
 

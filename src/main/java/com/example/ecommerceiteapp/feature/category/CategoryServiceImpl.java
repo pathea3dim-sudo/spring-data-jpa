@@ -1,12 +1,8 @@
-package com.example.ecommerceiteapp.service.impl;
+package com.example.ecommerceiteapp.feature.category;
 
-import com.example.ecommerceiteapp.domain.Category;
-import com.example.ecommerceiteapp.dto.CategoryResponse;
-import com.example.ecommerceiteapp.dto.CreateCategoryRequest;
-import com.example.ecommerceiteapp.dto.UpdateCategoryRequest;
-import com.example.ecommerceiteapp.mapper.CategoryMapper;
-import com.example.ecommerceiteapp.repository.CategoryRepository;
-import com.example.ecommerceiteapp.service.CategoryService;
+import com.example.ecommerceiteapp.feature.category.dto.CategoryResponse;
+import com.example.ecommerceiteapp.feature.category.dto.CreateCategoryRequest;
+import com.example.ecommerceiteapp.feature.category.dto.UpdateCategoryRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;

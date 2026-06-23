@@ -1,5 +1,8 @@
 #spring.application.name=ecommerce-ite-app
 
+file:
+  client-path: file
+  storage-location: E:\file\
 
 spring:
   application:
@@ -13,7 +16,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
 
     show-sql: true
 

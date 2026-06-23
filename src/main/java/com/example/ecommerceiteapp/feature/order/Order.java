@@ -1,4 +1,4 @@
-package com.example.ecommerceiteapp.domain;
+package com.example.ecommerceiteapp.feature.order;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -37,6 +37,12 @@ public class Order {
     @Column(nullable = false)
     private LocalDateTime orderedAt;
 
+//    @OneToMany(mappedBy = "order")
+//    private List<OrderLine> orderLineList;
+
+
+
     @OneToMany(mappedBy = "order")
-    private List<OrderLine> orderLineList;
+    private List<OrderLine> orderLines;
+
 }

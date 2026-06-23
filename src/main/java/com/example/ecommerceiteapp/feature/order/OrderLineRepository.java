@@ -1,6 +1,5 @@
-package com.example.ecommerceiteapp.repository;
+package com.example.ecommerceiteapp.feature.order;
 
-import com.example.ecommerceiteapp.domain.OrderLine;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OrderLineRepository extends JpaRepository<OrderLine, Integer> {

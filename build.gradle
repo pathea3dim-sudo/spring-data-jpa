@@ -31,6 +31,8 @@ repositories {
 
 dependencies {
 
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-scalar:3.0.3'
+
     // MapStruct and Lombok
     compileOnly 'org.mapstruct:mapstruct:1.6.3'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'

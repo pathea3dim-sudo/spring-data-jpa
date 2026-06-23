@@ -1,5 +1,7 @@
-package com.example.ecommerceiteapp.domain;
+package com.example.ecommerceiteapp.feature.product;
 
+import com.example.ecommerceiteapp.feature.category.Category;
+import com.example.ecommerceiteapp.feature.order.OrderLine;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,13 +41,13 @@ public class Product {
     private BigDecimal unitPrice;
 
     @Column(nullable = false)
-    private Integer quantuty;
+    private Integer qty;
 
     @Column(nullable = false)
     private Boolean isAvailable;
 
     @Column(nullable = false)
-    private Boolean isDeleted;
+    private Boolean isDeleted = false;
 
     @ManyToOne
     private Category category;

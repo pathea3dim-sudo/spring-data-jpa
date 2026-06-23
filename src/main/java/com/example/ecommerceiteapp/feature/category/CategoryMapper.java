@@ -1,8 +1,7 @@
-package com.example.ecommerceiteapp.mapper;
+package com.example.ecommerceiteapp.feature.category;
 
-import com.example.ecommerceiteapp.domain.Category;
-import com.example.ecommerceiteapp.dto.CategoryResponse;
-import com.example.ecommerceiteapp.dto.CreateCategoryRequest;
+import com.example.ecommerceiteapp.feature.category.dto.CategoryResponse;
+import com.example.ecommerceiteapp.feature.category.dto.CreateCategoryRequest;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

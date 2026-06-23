@@ -1,5 +1,6 @@
-package com.example.ecommerceiteapp.domain;
+package com.example.ecommerceiteapp.feature.category;
 
+import com.example.ecommerceiteapp.feature.product.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
