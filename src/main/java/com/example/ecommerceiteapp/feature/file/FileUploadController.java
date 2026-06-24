@@ -22,17 +22,24 @@ public class FileUploadController {
         return  fileUploadService.upload(file);
     }
 
+//    @PostMapping("/multiple")
+//    public List<FileUploadResponse> uploadMultiple(@RequestPart MultipartFile[] file) {
+//
+//        return fileUploadService.uploadMultiple(file);
+//    }
+
     @PostMapping("/multiple")
-    public List<FileUploadResponse> uploadMultiple(@RequestPart MultipartFile  file){
+    public List<FileUploadResponse> uploadMultiple(
+            @RequestParam("files") MultipartFile[] files) {
 
-
-        return  null;
+        return fileUploadService.uploadMultiple(files);
     }
 
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{name}")
     public void deleteByName(@PathVariable String name){
+        fileUploadService.deleteByName(name);
 
     }
 

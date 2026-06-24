@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -24,6 +26,8 @@ public class FileUploadServiceImpl implements FileUploadService{
 private String storageLocation;
 @Value("${file.base-uri}")
 private String baseUri;
+
+private  final FileUploadRepository fileUploadRepository;
 
     @Override
     public FileUploadResponse upload(MultipartFile file) {
@@ -60,6 +64,36 @@ private String baseUri;
                 .build();
     }
 
+    @Override
+    public List<FileUploadResponse> uploadMultiple(MultipartFile[] files) {
+        List<FileUploadResponse> responses=new ArrayList<>();
+
+        for(MultipartFile file: files){
+            responses.add(upload(file));
+        }
+        return responses;
+    }
+
+    @Override
+    public void deleteByName(String name) {
+        Path path=Paths.get(storageLocation, name);
+
+        try{
+            Files.deleteIfExists(path);
+        }catch (IOException e){
+            throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Cannot delete file.");
+        }
+
+        FileUpload fileUpload=fileUploadRepository
+                .findByName(name)
+                .orElseThrow(()-> new ResponseStatusException(
+                        HttpStatus.NO_CONTENT, "File not found"
+                ));
+
+        fileUploadRepository.delete(fileUpload);
+
+
+    }
 
 
 }
