@@ -3,6 +3,7 @@
 file:
   client-path: file
   storage-location: E:\file\
+  base-uri: http//localhost:9090:${server.port}{file.clent-path}
 
 spring:
   application:

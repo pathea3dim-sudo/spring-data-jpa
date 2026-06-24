@@ -14,6 +14,7 @@ public record ProductResponse(
         Boolean isAvailable,
         Boolean isDeleted,
         CategorySnippetResponse categorySnippetResponse
-
 ) {
+
+
 }
