@@ -1,9 +1,13 @@
+
+
+
 package com.example.ecommerceiteapp.feature.file;
 
 import com.example.ecommerceiteapp.feature.file.dto.FileUploadResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,37 +20,39 @@ public class FileUploadController {
 
     private final FileUploadService fileUploadService;
 
-    @PostMapping
-    public FileUploadResponse upload(@RequestPart MultipartFile file){
-//        return  file
-        return  fileUploadService.upload(file);
+
+    @GetMapping("/{name}")
+    public FileUploadResponse findByName(@PathVariable String name) {
+        return fileUploadService.findByName(name);
     }
 
-//    @PostMapping("/multiple")
-//    public List<FileUploadResponse> uploadMultiple(@RequestPart MultipartFile[] file) {
-//
-//        return fileUploadService.uploadMultiple(file);
-//    }
 
+    @GetMapping
+    public Page<FileUploadResponse> findAll(
+            @RequestParam(required = false, defaultValue = "0") int pageNumber,
+            @RequestParam(required = false, defaultValue = "25") int pageSize
+    ) {
+        return fileUploadService.findAll(pageNumber, pageSize);
+    }
+
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public FileUploadResponse upload(@RequestPart MultipartFile file) {
+        return fileUploadService.upload(file);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/multiple")
-    public List<FileUploadResponse> uploadMultiple(
-            @RequestParam("files") MultipartFile[] files) {
-
+    public List<FileUploadResponse> uploadMultiple(@RequestPart List<MultipartFile> files) {
         return fileUploadService.uploadMultiple(files);
     }
 
-
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{name}")
-    public void deleteByName(@PathVariable String name){
+    public void deleteByName(@PathVariable String name) {
         fileUploadService.deleteByName(name);
-
     }
-
-
-
-
-
 
 
 

@@ -20,11 +20,11 @@ public class OrderLine {
 
     @Column(nullable = false)
     private Boolean isDelete;
-    @Column(nullable = false)
 
+    @Column(nullable = false)
     private Integer qty;
-    @Column(nullable = false)
 
+    @Column(nullable = false)
     private BigDecimal unitPrice;
 
     @ManyToOne

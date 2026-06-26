@@ -47,9 +47,9 @@ public class ProductServiceImpl implements ProductService {
         product.setCode(GenerateUtils.generateProductCode());// ITE-3RD-1234
         product.setSlug(GenerateUtils.generateSlug(createProductRequest.name()));
 
-        Product saved= productRepository.save(product);
+        Product savedOrder= productRepository.save(product);
 
-        return productMapper.mapProductToProductResponse(saved);
+        return productMapper.mapProductToProductResponse(savedOrder);
     }
 
 
