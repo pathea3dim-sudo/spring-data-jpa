@@ -31,8 +31,14 @@ repositories {
 
 dependencies {
     implementation 'org.keycloak:keycloak-admin-client:26.0.10'
-    implementation 'org.springframework.boot:spring-boot-starter-mail'
+//    implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    implementation 'jakarta.mail:jakarta.mail-api:2.1.2'
+    implementation 'com.sun.mail:jakarta.mail:2.0.1'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+
 
 
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-scalar:3.0.3'

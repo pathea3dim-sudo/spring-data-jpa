@@ -6,3 +6,4 @@ public interface UserProfileService {
 
     UserProfileResponse me();
 }
+

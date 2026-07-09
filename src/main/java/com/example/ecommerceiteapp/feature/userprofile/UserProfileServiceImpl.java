@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class UserProfileServiceImpl implements UserProfileService {
+public class UserProfileServiceImpl implements UserProfileService{
 
     private final Keycloak keycloak;
     private final KeycloakAdminClientProps props;
