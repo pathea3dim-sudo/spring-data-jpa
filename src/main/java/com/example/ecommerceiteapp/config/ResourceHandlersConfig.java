@@ -19,6 +19,8 @@ public class ResourceHandlersConfig  implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(clientPath + "/**")
                 .addResourceLocations("file:" + storageLocation);
+
+
     }
 
 }

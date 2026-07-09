@@ -6,6 +6,11 @@ file:
   base-uri: http//localhost:9090:${server.port}{file.clent-path}
 
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9999/realms/ecommerce-ite2
   application:
     name: ecommerce-ite-app
 
@@ -14,6 +19,13 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: 123
+
+    spring:
+      datasource:
+        url=jdbc:postgresql://localhost:9168/keycloak_db:
+          spring:
+            datasource:
+              url=jdbc:postgresql://localhost:9168/ecommerce_db:
 
   jpa:
     hibernate:
@@ -24,7 +36,47 @@ spring:
     properties:
       hibernate:
         format_sql: true
-
+#        //
+mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:your-email@gmail.com}
+    password: ${MAIL_PASSWORD:your-app-password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+#          //
 server:
   port: 9090
+keycloak:
+    server-url: http://localhost:9999
+    realm: master
+    target-realm: ecommerce-ite2
+    client-id: spring-api-client3
+    client-secret: Mxhy9xAjyAgNlWG9m1l3UkjaCikSZ1wF
+#////
+app:
+  frontend:
+    url: ${FRONTEND_URL:http://localhost:3000}
+  email:
+    welcome:
+      subject: "Welcome to Ecommerce App!"
+      from: ${MAIL_FROM:noreply@ecommerce-app.com}
+
+# Logging Configuration
+logging:
+  level:
+    com.example.ecommerceiteapp: DEBUG
+    org.keycloak: INFO
+    org.springframework.mail: DEBUG
+    org.springframework.security: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
 

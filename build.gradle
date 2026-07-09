@@ -30,8 +30,13 @@ repositories {
 
 
 dependencies {
+    implementation 'org.keycloak:keycloak-admin-client:26.0.10'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
 
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-scalar:3.0.3'
+    implementation 'org.springframework.boot:spring-boot-starter-security-oauth2-resource-server'
 
     // MapStruct and Lombok
     compileOnly 'org.mapstruct:mapstruct:1.6.3'
