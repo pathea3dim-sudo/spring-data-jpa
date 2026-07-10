@@ -9,51 +9,49 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/category")
+@RequestMapping("/api/v1/categories")
 @RequiredArgsConstructor
 public class CategoryController {
 
     private final CategoryService categoryService;
 
-    @GetMapping
-    public Page<CategoryResponse> getAll(@RequestParam(defaultValue = "0") int page,
-                                         @RequestParam(defaultValue = "25") int size) {
-        return categoryService.allCategories(page, size);
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    public CategoryResponse createNew(@Valid @RequestBody CreateCategoryRequest createCategoryRequest) {
+        return categoryService.createCategory(createCategoryRequest);
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public CategoryResponse create(@RequestBody CreateCategoryRequest request) {
-        return categoryService.createCategory(request);
+    @GetMapping
+    public Page<CategoryResponse> findCategories(
+            @RequestParam(required = false, defaultValue = "0") int pageNumber,
+            @RequestParam(required = false, defaultValue = "25") int pageSize
+    ) {
+        return categoryService.findCategories(pageNumber, pageSize);
     }
+
 
     @GetMapping("/{id}")
-    public CategoryResponse getById(@PathVariable Integer id) {
-        return categoryService.getCategoryById(id);
+    public CategoryResponse findCategoryById(@PathVariable Integer id) {
+        return categoryService.findCategoryById(id);
     }
 
-    @GetMapping("/{id}/subcategories")
-    public List<CategoryResponse> getSubs(@PathVariable Integer id) {
-        return categoryService.getSubCategories(id);
-    }
-
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void hardDelete(@PathVariable Integer id) {
-        categoryService.hardDeleteById(id);
-    }
 
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void softDelete(@PathVariable Integer id) {
-        categoryService.softDeleteById(id);
+    public CategoryResponse updateCategory(@PathVariable Integer id, @Valid @RequestBody UpdateCategoryRequest updateCategoryRequest) {
+        return categoryService.updateCategory(id, updateCategoryRequest);
     }
 
-    @PatchMapping("/{id}")
-    public CategoryResponse update(@PathVariable Integer id,
-                                   @RequestBody UpdateCategoryRequest request) {
-        return categoryService.updateCategoryById(id, request);
+
+    @DeleteMapping("/{id}")
+    public void deleteCategory(@PathVariable Integer id) {
+        categoryService.deleteCategory(id);
     }
+
 }

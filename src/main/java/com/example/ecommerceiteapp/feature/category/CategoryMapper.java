@@ -8,10 +8,11 @@ import org.mapstruct.Mapper;
 public interface CategoryMapper {
 
 
+    Category categoryRequestToCategory(CreateCategoryRequest categoryRequest);
     Category mapCreateCategoryRequestTotalCaegory(CreateCategoryRequest createCategoryRequest);
 
     Category toCategory(CreateCategoryRequest request);
-    CategoryResponse toCategoryResponse(Category category);
+    CategoryResponse categoryToCategoryResponse(Category category);
 
 
 

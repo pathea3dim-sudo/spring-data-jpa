@@ -1,6 +1,5 @@
 package com.example.ecommerceiteapp.feature.auth;
 
-
 import lombok.RequiredArgsConstructor;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.resource.UserResource;

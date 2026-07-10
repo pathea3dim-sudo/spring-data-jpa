@@ -4,13 +4,22 @@ import com.example.ecommerceiteapp.feature.category.dto.CategoryResponse;
 import com.example.ecommerceiteapp.feature.category.dto.CreateCategoryRequest;
 import com.example.ecommerceiteapp.feature.category.dto.UpdateCategoryRequest;
 import org.springframework.data.domain.Page;
+
 import java.util.List;
 
 public interface CategoryService {
 
-    Page<CategoryResponse> allCategories(Integer pageNumber, Integer pageSize);
+    CategoryResponse createCategory(CreateCategoryRequest request);
 
-    CategoryResponse createCategory(CreateCategoryRequest createCategoryRequest);
+    Page<CategoryResponse> findCategories(int pageNumber, int pageSize);
+
+    CategoryResponse findCategoryById(Integer categoryId);
+
+    CategoryResponse updateCategory(Integer id, UpdateCategoryRequest request);
+
+    void deleteCategory(Integer categoryId);
+
+    Page<CategoryResponse> allCategories(Integer pageNumber, Integer pageSize);
 
     CategoryResponse getCategoryById(Integer id);
 
@@ -20,5 +29,5 @@ public interface CategoryService {
 
     List<CategoryResponse> getSubCategories(Integer parentCategoryId);
 
-    CategoryResponse updateCategoryById(Integer id, UpdateCategoryRequest updateCategoryRequest);
+    CategoryResponse updateCategoryById(Integer id, UpdateCategoryRequest request);
 }
